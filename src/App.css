@@ -1,0 +1,35 @@
+@import "variables.css";
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+#root{
+    width: 100%;
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background: var(--gray);
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.btn-authorize {
+    background: var(--white);
+    border-radius: 35px;
+    padding: 1rem 2rem;
+    color: var(--green);
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+}

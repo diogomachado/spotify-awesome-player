@@ -1,0 +1,10 @@
+@import "../../variables.css";
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    background: var(--black);
+    left: 0;
+    right: 0;
+    height: 80px;
+}

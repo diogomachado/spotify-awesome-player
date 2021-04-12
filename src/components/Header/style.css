@@ -1,0 +1,39 @@
+@import "../../variables.css";
+
+.header{
+    background: var(--black);
+    height: 65px;
+    padding: 5px 1rem;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header div{
+    flex-basis: 100%;
+}
+
+.header-logo{
+
+}
+
+.header-logo img{
+    width: 140px;
+}
+
+.header-search{
+
+}
+
+.header-search input{
+    width: 100%;
+    border-radius: 5px;
+    border: 0;
+    padding: .5rem;
+}
+
+.header-user{
+    text-align: right;
+}
