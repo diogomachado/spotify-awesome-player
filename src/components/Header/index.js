@@ -1,5 +1,5 @@
 import React from 'react';
-import './style.css';
+import './style.scss';
 import logo from '../../assets/Spotify_Logo_RGB_Green.png';
 
 export default function Header() {

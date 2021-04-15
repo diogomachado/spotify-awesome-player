@@ -1,0 +1,90 @@
+@import "variables.css";
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+#root{
+    width: 100%;
+    height: 100vh;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background: var(--gray);
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.jc-center{
+    justify-content: center;
+}
+
+.ai-center{
+    align-items: center;
+}
+
+.content{
+    padding: 1.5rem 3rem 7rem 3rem;
+    
+    .grid-albums{
+        display: grid;
+        grid-template-columns: repeat(5, minmax(155px, 1fr));
+        grid-gap: 20px;
+        
+        img{
+            width: 100%;
+        }
+    }
+
+    .grid-tracks{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.btn-authorize {
+    background: var(--white);
+    border-radius: 35px;
+    padding: 1rem 2rem;
+    color: var(--green);
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+}
+
+.btn-album{
+    outline: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition-duration: 200ms;
+
+    &:hover{
+        transition-duration: 200ms;
+        opacity: 0.8;
+    }
+}
+
+.track{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-top: 1px black solid;
+
+    .track-name{
+        color: white;
+    }
+    .track-duration{
+        color: rgba(255, 255, 255, 0.822);
+    }
+}
