@@ -2,8 +2,7 @@
 
 .header{
     background: var(--black);
-    height: 65px;
-    padding: 5px 1rem;
+    padding: 1rem 1rem;
     color: white;
     display: flex;
     flex-direction: row;
@@ -31,7 +30,16 @@
     width: 100%;
     border-radius: 5px;
     border: 0;
-    padding: .5rem;
+    padding: .61rem;
+    font-size: 1rem;
+    background: #696969;
+    outline: none;
+    transition-duration: 250ms;
+
+    &:focus{
+        background: #b9b9b9;
+        transition-duration: 250ms;
+    }
 }
 
 .header-user{
