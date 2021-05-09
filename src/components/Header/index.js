@@ -9,6 +9,7 @@ export default function Header() {
                 <img src={logo}/>
             </div>
             <div className="header-search">
+                <i className="header-search-icon"></i>
                 <input type="text" name="search" />
             </div>
             <div className="header-user">
