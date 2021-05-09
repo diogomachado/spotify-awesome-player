@@ -1,6 +1,7 @@
 import './App.scss';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Album from './components/Album';
 import React, { useEffect, useState } from 'react';
 import ApiService from './service/api';
 
@@ -30,6 +31,10 @@ function App() {
         }
     }, []);
 
+    useEffect(() => {
+        setPlaylistOpened(true);
+    }, [tracks]);
+
     function getPlaylists() {
 
         ApiService.get('/me/playlists?offset=20&limit=20')
@@ -55,33 +60,6 @@ function App() {
             });
     }
 
-    function getTracksPlaylist(playlist_id) {
-
-        ApiService.get(`/playlists/${playlist_id}/tracks`)
-            .then(res => {
-                if (res.status == 401) {
-                    throw (res.status);
-                } else {
-                    return res.json();
-                }
-            })
-            .then((response) => {
-                console.group('Tracks');
-                console.log(response);
-                console.groupEnd();
-
-                setPlaylistOpened(true);
-
-                setTracks(response.items);
-            })
-            .catch(response => {
-                console.error(response);
-                if (response == '401') {
-                    setLogged(false);
-                }
-            });
-    }
-
     function getView() {
         return (
             <>
@@ -92,11 +70,7 @@ function App() {
                                             <div className="grid-albums">
                                                 {
                                                     (playlists.map(item => {
-                                                        return  <>
-                                                                <button onClick={() => getTracksPlaylist(item.id)} type="button" className="btn-album">
-                                                                    <img src={item.images[0].url} alt="Album"/>
-                                                                </button>
-                                                                </>
+                                                        return <Album key={item.id} album={item} callback={setTracks}/>
                                                     }))
                                                 }
                                             </div>
