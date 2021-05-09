@@ -32,7 +32,9 @@ function App() {
     }, []);
 
     useEffect(() => {
-        setPlaylistOpened(true);
+        if (tracks.length > 0) {
+            setPlaylistOpened(true);
+        }
     }, [tracks]);
 
     function getPlaylists() {
@@ -67,6 +69,7 @@ function App() {
 
                 {
                     (!playlistOpened) && <section className="content">
+                                            <h1 className="primary-title">Playlists</h1>
                                             <div className="grid-albums">
                                                 {
                                                     (playlists.map(item => {

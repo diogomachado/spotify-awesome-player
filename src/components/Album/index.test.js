@@ -11,7 +11,10 @@ describe("<Album/>", () => {
             {
                 url: "https://picsum.photos/536/354"
             }
-        ]
+        ],
+        tracks: {
+            total: 10
+        }
     }
 
     it('should have component instance', () => {
@@ -19,8 +22,13 @@ describe("<Album/>", () => {
         expect(wrapper.find('button')).toHaveLength(1);
     })
 
-    it('should have p with class .title', () => {
+    it('should have p with class .btn-album-info-title', () => {
         const wrapper = shallow(<Album album={item}/>);
-        expect(wrapper.find('p.title')).toHaveLength(1);
+        expect(wrapper.find('p.btn-album-info-title')).toHaveLength(1);
+    })
+
+    it('should have p with class .btn-album-info-track-number', () => {
+        const wrapper = shallow(<Album album={item}/>);
+        expect(wrapper.find('p.btn-album-info-track-number')).toHaveLength(1);
     })
 });
