@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.scss';
 import logo from '../../assets/Spotify_Logo_RGB_Green.png';
+import User from '../User'
 
 export default function Header() {
     return (
@@ -13,7 +14,7 @@ export default function Header() {
                 <input type="text" name="search" />
             </div>
             <div className="header-user">
-                <p>Diogo</p>
+                <User/>
             </div>
         </header>
     );
