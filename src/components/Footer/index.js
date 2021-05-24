@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './style.scss';
 import Progress from '../Progress';
+import Controls from '../Controls';
 
 export default function Footer() {
 
@@ -15,7 +16,9 @@ export default function Footer() {
     return (
         <footer className="footer">
             <Progress value={valueProgress} />
-            <div className="footer-container"></div>
+            <div className="footer-container">
+                <Controls />
+            </div>
         </footer>
     );
 }

@@ -10,6 +10,9 @@
     .footer-container{
         position: relative;
         background: var(--black);
-        height: 80px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
