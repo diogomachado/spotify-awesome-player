@@ -56,7 +56,7 @@ function App() {
             })
             .catch(response => {
                 console.error(response);
-                if (response == '401') {
+                if (response === 401) {
                     setLogged(false);
                 }
             });

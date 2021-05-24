@@ -8,10 +8,16 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
 
-.header div{
-    flex-basis: 100%;
+    .header-logo{
+        flex-basis: 40%;
+    }
+    .header-search{
+        flex-basis: 60%;
+    }
+    .header-user{
+        flex-basis: 40%;
+    }
 }
 
 .header-logo{
@@ -28,7 +34,7 @@
         width: 100%;
         border-radius: 5px;
         border: 0;
-        padding: .61rem .61rem .61rem 2.35rem;
+        padding: .90rem .61rem .90rem 2.35rem;
         font-size: 1rem;
         background: #696969;
         outline: none;
