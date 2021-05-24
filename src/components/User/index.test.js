@@ -17,4 +17,18 @@ describe("<User/>", () => {
         const wrapper = shallow(<User />);
         expect(wrapper.find('.user-wrapper')).toHaveLength(1);
     })
+
+    describe('Events tests', () => {
+        it("should to show menu contextual when hover the mouse", () => {
+            const wrapper = shallow(<User />);
+            wrapper.simulate('mouseEnter');
+            expect(wrapper.find('._opened')).toHaveLength(1);
+        })
+
+        it("should not show menu contextual when leave mouse", () => {
+            const wrapper = shallow(<User />);
+            wrapper.simulate('mouseLeave');
+            expect(wrapper.find('._opened')).toHaveLength(0);
+        })
+    })
 })

@@ -1,8 +1,43 @@
-.user-wrapper{
-}
+.user-wrapper{}
 
 #user-image-profile{
     width: 50px;
     height: 50px;
     border-radius: 50%;
+}
+
+#user-menu-contextual{
+    display: none;
+    position: absolute;
+    right: 1rem;
+    background: rgba(0, 0, 0, 84%);
+    border-radius: 7px;
+    min-width: 190px;
+
+    ul{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    button{
+        outline: none;
+        background: rgba(0,0,0,1);
+        width: 100%;
+        border: 0;
+        color: #ABABAB;
+        text-align: left;
+        padding: 1rem 1.4rem;
+        border-radius: 7px;
+
+        &:hover{
+            background: rgba(255,255,255,0.05);
+            cursor: pointer;
+            color: white;
+        }
+    }
+
+    &._opened{
+        display: block;
+    }
 }
