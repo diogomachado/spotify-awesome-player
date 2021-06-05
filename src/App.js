@@ -93,9 +93,20 @@ function App() {
         return (
             <>
                 <section className="content">
-                    <h2>Tracks</h2>
+                    <button type="button" onClick={() => backPlaylist()}>Voltar</button>
+
+                    <header className="header-album">
+                        <div className="header-album-cover">
+                            <img src="https://upload.wikimedia.org/wikipedia/pt/1/12/Avril_Lavigne_Let_Go.jpg"/>
+                        </div>
+                        <div className="header-album-details">
+                            <h1 className="header-album-details-artist">Avril Lavigne</h1>
+                            <h2 className="header-album-details-song">Under My Skin</h2>
+                            <p className="header-album-details-number-songs">16 songs</p>
+                        </div>
+                    </header>
+
                     <div className="grid-tracks">
-                        <button onClick={() => backPlaylist()}>Voltar</button>
                         {
                             (tracks.map(item => {
                                 return <div className="track">

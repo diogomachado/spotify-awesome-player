@@ -67,13 +67,52 @@ body {
 .track{
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 0;
-    border-top: 1px black solid;
+    padding: 1rem;
+    margin-bottom: .6rem;
+    background: rgba(0, 0, 0, 0.31);
+    border-radius: 6px;
+    cursor: pointer;
 
     .track-name{
-        color: white;
+        color: #CECECE;
     }
     .track-duration{
         color: rgba(255, 255, 255, 0.822);
+    }
+}
+
+// header-album
+.header-album{
+    display: flex;
+    flex-direction: row;
+    padding: 3rem 0;
+    align-items: center;
+
+    .header-album-cover{
+        padding-right: 2rem;
+
+        img{
+            width: 180px;
+            border-radius: 5px;
+        }
+    }
+    .header-album-details{
+        
+    }
+
+    .header-album-details-artist{
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .header-album-details-song{
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .header-album-details-number-songs{
+        margin: 0;
+        font-size: 0.875rem;
     }
 }
