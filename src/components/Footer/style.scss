@@ -13,6 +13,37 @@
         height: 90px;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+    }
+
+    .align-div{
+        width: 200px;
+    }
+}
+
+.music-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .music-info-cover{
+        padding-left: 0.5rem;
+        padding-right: 0.75rem;
+
+        img{
+            width: 70px;
+        }
+    }
+    .music-info-details{
+        .music-info-details-song{
+            margin: 0;
+            color: white;
+        }
+        .music-info-details-artist{
+            margin: 0;
+            color: white;
+            font-weight: 200;
+            font-size: 0.92rem;
+        }
     }
 }
