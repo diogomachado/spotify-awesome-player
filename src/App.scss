@@ -40,6 +40,7 @@ body {
 .content{
     width: 80vw;
     margin: 0 auto;
+    padding-bottom: 8rem;
     
     .grid-albums{
         position: relative;
@@ -64,6 +65,16 @@ body {
     display: inline-block;
 }
 
+.btn-back{
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    margin-top: 1.5rem;
+}
+
 .track{
     display: flex;
     justify-content: space-between;
@@ -85,7 +96,7 @@ body {
 .header-album{
     display: flex;
     flex-direction: row;
-    padding: 3rem 0;
+    padding: 1rem 0 3rem 0;
     align-items: center;
 
     .header-album-cover{

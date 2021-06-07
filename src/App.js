@@ -4,6 +4,8 @@ import Footer from './components/Footer';
 import Album from './components/Album';
 import React, { useEffect, useState } from 'react';
 import ApiService from './service/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
 
@@ -11,6 +13,7 @@ function App() {
     const [tracks, setTracks] = useState([]);
     const [playlistOpened, setPlaylistOpened] = useState(false);
     const [logged, setLogged] = useState(false);
+    const [playlist, setPlaylist] = useState({});
 
     useEffect(() => {
 
@@ -31,15 +34,17 @@ function App() {
         }
     }, []);
 
+    // Used to show the list of tracks. Could have use here routes
     useEffect(() => {
         if (tracks.length > 0) {
+            window.scrollTo(0, 0);
             setPlaylistOpened(true);
         }
     }, [tracks]);
 
     function getPlaylists() {
 
-        ApiService.get('/me/playlists?offset=20&limit=20')
+        ApiService.get('/me/playlists?offset=0&limit=50')
             .then(res => {
                 if (res.status == 401) {
                     throw (res.status);
@@ -62,6 +67,18 @@ function App() {
             });
     }
 
+    function openPlaylist(playlist, tracks) {
+        console.log(playlist);
+        setPlaylist(playlist);
+        setTracks(tracks);
+    }
+
+    function millisToMinutesAndSeconds(millis) {
+        let minutes = Math.floor(millis / 60000);
+        let seconds = ((millis % 60000) / 1000).toFixed(0);
+        return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    }
+
     function getView() {
         return (
             <>
@@ -72,8 +89,8 @@ function App() {
                                             <h1 className="primary-title">Playlists</h1>
                                             <div className="grid-albums">
                                                 {
-                                                    (playlists.map(item => {
-                                                        return <Album key={item.id} album={item} callback={setTracks}/>
+                                                    (playlists.map(playlist => {
+                                                        return <Album key={playlist.id} album={playlist} callback={(tracks) => openPlaylist(playlist, tracks)}/>
                                                     }))
                                                 }
                                             </div>
@@ -93,16 +110,18 @@ function App() {
         return (
             <>
                 <section className="content">
-                    <button type="button" onClick={() => backPlaylist()}>Voltar</button>
+                    <button className="btn-back" type="button" onClick={() => backPlaylist()}>
+                        <FontAwesomeIcon color="white" size="1x" icon={faHome} />
+                    </button>
 
                     <header className="header-album">
                         <div className="header-album-cover">
-                            <img src="https://upload.wikimedia.org/wikipedia/pt/1/12/Avril_Lavigne_Let_Go.jpg"/>
+                            <img src={playlist.images[0].url}/>
                         </div>
                         <div className="header-album-details">
-                            <h1 className="header-album-details-artist">Avril Lavigne</h1>
-                            <h2 className="header-album-details-song">Under My Skin</h2>
-                            <p className="header-album-details-number-songs">16 songs</p>
+                            {/* <h1 className="header-album-details-artist">Avril Lavigne</h1> */}
+                            <h2 className="header-album-details-song">{playlist.name}</h2>
+                            <p className="header-album-details-number-songs">{playlist.tracks.total} songs</p>
                         </div>
                     </header>
 
@@ -111,7 +130,7 @@ function App() {
                             (tracks.map(item => {
                                 return <div className="track">
                                     <div className="track-name">{ item.track.name }</div>
-                                    <div className="track-duration">{ item.track.duration_ms }</div>
+                                    <div className="track-duration">{ millisToMinutesAndSeconds(item.track.duration_ms) }</div>
                                 </div>
                             }))
                         }
