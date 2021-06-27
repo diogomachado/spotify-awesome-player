@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle, faPauseCircle } from '@fortawesome/free-regular-svg-icons';
 import { faStepBackward, faStepForward } from '@fortawesome/free-solid-svg-icons';
 import './style.scss';
+import MyContext from '../../contexts/myContext';
 
 export default function Controls() {
 
+    const { setProgress } = useContext(MyContext);
     const [player, setPlayer] = useState();
     const [paused, setPaused] = useState(true);
 
@@ -39,6 +41,11 @@ export default function Controls() {
             player.addListener('player_state_changed', state => { 
                 console.log(state);
                 setPaused(state.paused);
+
+                setProgress({
+                    position: state.position,
+                    duration: state.duration
+                });
             });
 
             // Ready

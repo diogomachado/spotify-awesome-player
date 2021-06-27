@@ -6,9 +6,14 @@ import React, { useEffect, useState } from 'react';
 import ApiService from './service/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
+import MyContext from './contexts/myContext';
 
 function App() {
 
+    const [progress, setProgress] = useState({
+        position: 0,
+        duration: 0
+    });
     const [playlists, setPlaylists] = useState([]);
     const [tracks, setTracks] = useState([]);
     const [playlistOpened, setPlaylistOpened] = useState(false);
@@ -82,26 +87,28 @@ function App() {
     function getView() {
         return (
             <>
-                <Header />
+                <MyContext.Provider value={{ progress, setProgress }}>
+                    <Header />
 
-                {
-                    (!playlistOpened) && <section className="content">
-                                            <h1 className="primary-title">Playlists</h1>
-                                            <div className="grid-albums">
-                                                {
-                                                    (playlists.map(playlist => {
-                                                        return <Album key={playlist.id} album={playlist} callback={(tracks) => openPlaylist(playlist, tracks)}/>
-                                                    }))
-                                                }
-                                            </div>
-                                        </section>
-                }
+                    {
+                        (!playlistOpened) && <section className="content">
+                                                <h1 className="primary-title">Playlists</h1>
+                                                <div className="grid-albums">
+                                                    {
+                                                        (playlists.map(playlist => {
+                                                            return <Album key={playlist.id} album={playlist} callback={(tracks) => openPlaylist(playlist, tracks)}/>
+                                                        }))
+                                                    }
+                                                </div>
+                                            </section>
+                    }
 
-                {
-                    (playlistOpened) && getViewTracks()
-                }
+                    {
+                        (playlistOpened) && getViewTracks()
+                    }
 
-                <Footer />
+                    <Footer />
+                </MyContext.Provider>
             </>
         )
     }

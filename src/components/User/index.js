@@ -42,7 +42,7 @@ export default function User() {
     return (
         <section className="user-wrapper" onMouseEnter={ () => setMenuContextual(true) } onMouseLeave={ () => setMenuContextual(false) }>
             <img id="user-image-profile" src={user.images[0].url} />
-            <nav id="user-menu-contextual" className={ (menuContextual) && '_opened' }>
+            <nav id="user-menu-contextual" className={ (menuContextual) ? '_opened' : '' }>
                 <ul>
                     <li><button type="button">Settings</button></li>
                     <li><button type="button">Logout</button></li>
