@@ -3,4 +3,15 @@
     align-items: center;
     justify-content: space-between;
     width: 200px;
+
+    button{
+        background: none;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+
+        :hover{
+            opacity: 0.75;
+        }
+    }
 }
