@@ -15,6 +15,8 @@ function App() {
         duration: 0
     });
     const [currentTrack, setCurrentTrack] = useState();
+    const [paused, setPaused] = useState(false);
+
     const [playlists, setPlaylists] = useState([]);
     const [tracks, setTracks] = useState([]);
     const [playlistOpened, setPlaylistOpened] = useState(false);
@@ -88,7 +90,7 @@ function App() {
     function getView() {
         return (
             <>
-                <MyContext.Provider value={{ progress, setProgress, currentTrack, setCurrentTrack }}>
+                <MyContext.Provider value={{ progress, setProgress, currentTrack, setCurrentTrack, paused, setPaused }}>
                     <Header />
 
                     {
@@ -119,6 +121,7 @@ function App() {
             uris: [track.uri]
         })
             .then(res => {
+                setPaused(false);
                 if (res.status == 401) {
                     throw (res.status);
                 } else {

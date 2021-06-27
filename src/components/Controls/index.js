@@ -7,9 +7,8 @@ import MyContext from '../../contexts/myContext';
 
 export default function Controls() {
 
-    const { setProgress, setCurrentTrack } = useContext(MyContext);
+    const { setProgress, setCurrentTrack, paused, setPaused } = useContext(MyContext);
     const [player, setPlayer] = useState();
-    const [paused, setPaused] = useState(true);
 
     useEffect(() => {
         // Inject the script in the project
@@ -39,7 +38,7 @@ export default function Controls() {
 
             // Playback status updates
             player.addListener('player_state_changed', state => { 
-                console.log(state);
+                console.log(state.paused);
                 setPaused(state.paused);
 
                 setProgress({
@@ -93,7 +92,7 @@ export default function Controls() {
                 <FontAwesomeIcon color="white" style={{ fontSize: '20px' }} icon={faStepBackward} />
             </button>
             <button type="button" onClick={() => tooglePlay() }>
-                <FontAwesomeIcon color="white" size="3x" icon={(paused) ? faPauseCircle : faPlayCircle } />
+                <FontAwesomeIcon color="white" size="3x" icon={(paused) ? faPlayCircle : faPauseCircle } />
             </button>
             <button type="button" onClick={() => nextTrack() }>
                 <FontAwesomeIcon color="white" style={{ fontSize: '20px' }} icon={faStepForward} />
