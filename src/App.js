@@ -14,6 +14,7 @@ function App() {
         position: 0,
         duration: 0
     });
+    const [currentTrack, setCurrentTrack] = useState();
     const [playlists, setPlaylists] = useState([]);
     const [tracks, setTracks] = useState([]);
     const [playlistOpened, setPlaylistOpened] = useState(false);
@@ -87,7 +88,7 @@ function App() {
     function getView() {
         return (
             <>
-                <MyContext.Provider value={{ progress, setProgress }}>
+                <MyContext.Provider value={{ progress, setProgress, currentTrack, setCurrentTrack }}>
                     <Header />
 
                     {
@@ -113,6 +114,28 @@ function App() {
         )
     }
 
+    function playMusic(track) {
+        ApiService.put(`/me/player/play?device_id=${localStorage.getItem('sap_active_device')}`, {
+            uris: [track.uri]
+        })
+            .then(res => {
+                if (res.status == 401) {
+                    throw (res.status);
+                } else {
+                    return res.json();
+                }
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch(response => {
+                console.error(response);
+                if (response == '401') {
+                    setLogged(false);
+                }
+            });
+    }
+
     function getViewTracks() {
         return (
             <>
@@ -135,7 +158,7 @@ function App() {
                     <div className="grid-tracks">
                         {
                             (tracks.map(item => {
-                                return <div className="track">
+                                return <div className="track" onClick={() => playMusic(item.track)}>
                                     <div className="track-name">{ item.track.name }</div>
                                     <div className="track-duration">{ millisToMinutesAndSeconds(item.track.duration_ms) }</div>
                                 </div>

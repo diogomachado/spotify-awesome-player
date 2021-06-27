@@ -7,7 +7,7 @@ import MyContext from '../../contexts/myContext';
 
 export default function Controls() {
 
-    const { setProgress } = useContext(MyContext);
+    const { setProgress, setCurrentTrack } = useContext(MyContext);
     const [player, setPlayer] = useState();
     const [paused, setPaused] = useState(true);
 
@@ -46,11 +46,14 @@ export default function Controls() {
                     position: state.position,
                     duration: state.duration
                 });
+
+                setCurrentTrack(state.track_window.current_track);
             });
 
             // Ready
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);
+                localStorage.setItem('sap_active_device', device_id);
             });
 
             // Not Ready
@@ -90,7 +93,7 @@ export default function Controls() {
                 <FontAwesomeIcon color="white" style={{ fontSize: '20px' }} icon={faStepBackward} />
             </button>
             <button type="button" onClick={() => tooglePlay() }>
-                <FontAwesomeIcon color="white" size="3x" icon={(paused) ? faPlayCircle : faPauseCircle } />
+                <FontAwesomeIcon color="white" size="3x" icon={(paused) ? faPauseCircle : faPlayCircle } />
             </button>
             <button type="button" onClick={() => nextTrack() }>
                 <FontAwesomeIcon color="white" style={{ fontSize: '20px' }} icon={faStepForward} />

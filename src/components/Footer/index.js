@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './style.scss';
 import Progress from '../Progress';
 import Controls from '../Controls';
+import MyContext from '../../contexts/myContext';
 
 export default function Footer() {
     
+    const { currentTrack } = useContext(MyContext);
+
     return (
         <footer className="footer">
             <Progress />
@@ -13,11 +16,11 @@ export default function Footer() {
                 {/* Details about the music playing */}
                 <aside className="music-info">
                     <div className="music-info-cover">
-                        <img src="https://i1.sndcdn.com/artworks-000527167749-vpxrk0-t500x500.jpg" />
+                        <img src={ currentTrack?.album?.images[0]?.url } />
                     </div>
                     <div className="music-info-details">
-                        <h3 className="music-info-details-song">Não é sério</h3>
-                        <p className="music-info-details-artist">Charlie Brown Jr.</p>
+                        <h3 className="music-info-details-song">{ currentTrack?.name }</h3>
+                        <p className="music-info-details-artist">{ currentTrack?.artists[0]?.name }</p>
                     </div>
                 </aside>
 
