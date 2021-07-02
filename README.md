@@ -15,7 +15,7 @@
 ## 🚀 Quickstart
 Create your application on [Spotify Dashboard](https://developer.spotify.com/dashboard), so you need set in the .env `REACT_APP_SPOTIFY_CLIENT_ID` your _client_id_ and the `REACT_APP_SPOTIFY_REDIRECT` that's the domain redirect after login (default: http://localhost:3000)
 
-1. Example your .env
+1. Example your [.env](https://create-react-app.dev/docs/adding-custom-environment-variables/#adding-development-environment-variables-in-env)
 ```
 REACT_APP_SPOTIFY_CLIENT_ID=<CLIENT_ID>
 REACT_APP_SPOTIFY_REDIRECT=http://localhost:3000
