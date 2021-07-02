@@ -10,6 +10,7 @@ import MyContext from './contexts/myContext';
 
 function App() {
 
+    const signURL = `https://accounts.spotify.com/authorize?response_type=token&client_id=${process.env.REACT_APP_SPOTIFY_CLIENT_ID}&scope=streaming,user-read-email,user-modify-playback-state,user-read-private&redirect_uri=${process.env.REACT_APP_SPOTIFY_REDIRECT}`;
     const [progress, setProgress] = useState({
         position: 0,
         duration: 0
@@ -181,7 +182,7 @@ function App() {
         return (
             <>
                 <section className="container jc-center ai-center">
-                    <a className="btn-authorize" href="https://accounts.spotify.com/authorize?response_type=token&client_id=ce8bed51e3c84b9e80a7808c62f490a0&scope=streaming,user-read-email,user-modify-playback-state,user-read-private&redirect_uri=http://localhost:3000">Sign account</a>
+                    <a className="btn-authorize" href={signURL}>Sign account</a>
                 </section>
             </>
         )
