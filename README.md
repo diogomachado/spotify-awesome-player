@@ -42,5 +42,8 @@ yarn start
 ## Author
 ![](./src/assets/author-diogo-machado.png)
 
-Hi, I'm Diogo, a software developer that ❤️ web and music
-![](https://img.shields.io/twitter/url?label=Follow%20me&style=social&url=https%3A%2F%2Ftwitter.com%2Ftec_diogo)
+Hi, I'm Diogo, a software developer that loves web and music
+
+<a href="https://twitter.com/tec_diogo">
+<img src="https://img.shields.io/twitter/url?label=Follow%20me&style=social&url=https%3A%2F%2Ftwitter.com%2Ftec_diogo"/>
+</a>
