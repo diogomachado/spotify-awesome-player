@@ -7,6 +7,8 @@
     <img src="https://img.shields.io/badge/license-MIT-green"/>
 </div>
 
+![](./src/assets/Screen.png)
+
 ## 😍 Features
 - **Focus on your playlist**: This player was built to be a focus on your playlist, official Spotify is great, so we focus in features that doesn't exist there.
 - **Themes**: Choose your favorite theme – _soon_.
