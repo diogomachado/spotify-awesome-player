@@ -1,7 +1,7 @@
 <h1 align="center">
   Spotify Awesome Player
 </h1>
-<p align="center">A custom web player connected in your Spotify Account</p>
+<p align="center">🎵 A custom web player connected in your Spotify Account</p>
 <div align="center">
     <img src="https://img.shields.io/badge/react-17.0.1-blue"/>
     <img src="https://img.shields.io/badge/license-MIT-green"/>
@@ -40,4 +40,7 @@ yarn start
 - [Font Awesome for Reactjs](https://fontawesome.com/v5.15/how-to-use/on-the-web/using-with/react)
 
 ## Author
-Hi, I'm Diogo, a software developer that loves web and music
+![](./src/assets/author-diogo-machado.png)
+
+Hi, I'm Diogo, a software developer that ❤️ web and music
+![](https://img.shields.io/twitter/url?label=Follow%20me&style=social&url=https%3A%2F%2Ftwitter.com%2Ftec_diogo)
