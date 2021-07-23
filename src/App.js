@@ -66,7 +66,9 @@ function App() {
                 console.log(response);
                 console.groupEnd();
 
-                setPlaylists(response.items);
+                const playlists = orderAlphabetically(response.items);
+
+                setPlaylists(playlists);
             })
             .catch(response => {
                 console.error(response);
@@ -74,6 +76,13 @@ function App() {
                     setLogged(false);
                 }
             });
+    }
+
+    function orderAlphabetically(playlists) {
+        const sortedPlaylists = playlists.sort((a, b) => {
+            return a.name.localeCompare(b.name);
+        });
+        return sortedPlaylists;
     }
 
     function openPlaylist(playlist, tracks) {
