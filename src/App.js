@@ -17,6 +17,7 @@ function App() {
     });
     const [currentTrack, setCurrentTrack] = useState();
     const [paused, setPaused] = useState(false);
+    const [isLoadingPlaylists, setIsLoadingPlaylists] = useState(true);
 
     const [playlists, setPlaylists] = useState([]);
     const [tracks, setTracks] = useState([]);
@@ -51,9 +52,9 @@ function App() {
         }
     }, [tracks]);
 
-    function getPlaylists() {
+    function getPlaylists(offset = 0) {
 
-        ApiService.get('/me/playlists?offset=0&limit=50')
+        ApiService.get(`/me/playlists?offset=${offset}&limit=50`)
             .then(res => {
                 if (res.status == 401) {
                     throw (res.status);
@@ -66,9 +67,11 @@ function App() {
                 console.log(response);
                 console.groupEnd();
 
-                const playlists = orderAlphabetically(response.items);
+                const lists = [...playlists, ...response.items];
+                const listsOrdered = orderAlphabetically(lists);
 
-                setPlaylists(playlists);
+                setPlaylists(listsOrdered);
+                setIsLoadingPlaylists(false);
             })
             .catch(response => {
                 console.error(response);
@@ -76,6 +79,10 @@ function App() {
                     setLogged(false);
                 }
             });
+    }
+
+    function loadMorePlaylists() {
+        getPlaylists(playlists.length);
     }
 
     function orderAlphabetically(playlists) {
@@ -106,13 +113,28 @@ function App() {
                     {
                         (!playlistOpened) && <section className="content">
                                                 <h1 className="primary-title">Playlists</h1>
-                                                <div className="grid-albums">
-                                                    {
-                                                        (playlists.map(playlist => {
-                                                            return <Album key={playlist.id} album={playlist} callback={(tracks) => openPlaylist(playlist, tracks)}/>
-                                                        }))
-                                                    }
-                                                </div>
+
+                                                {
+                                                    (isLoadingPlaylists) && <div className="grid-albums">
+                                                                                <div className="grid-albums-fake-item"></div>
+                                                                                <div className="grid-albums-fake-item"></div>
+                                                                                <div className="grid-albums-fake-item"></div>
+                                                                                <div className="grid-albums-fake-item"></div>
+                                                                                <div className="grid-albums-fake-item"></div>
+                                                                                <div className="grid-albums-fake-item"></div>
+                                                                                <div className="grid-albums-fake-item"></div>
+                                                                            </div>
+                                                }
+
+                                                {
+                                                    (!isLoadingPlaylists) && <div className="grid-albums">
+                                                                                {
+                                                                                    (playlists.map(playlist => {
+                                                                                        return <Album key={playlist.id} album={playlist} callback={(tracks) => openPlaylist(playlist, tracks)}/>
+                                                                                    }))
+                                                                                }
+                                                                            </div>
+                                                }
                                             </section>
                     }
 

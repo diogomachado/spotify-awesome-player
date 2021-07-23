@@ -30,7 +30,7 @@ export default function Album({ album, callback }) {
 
     return (
         <button onClick={() => getTracksPlaylist(album.id)} type="button" className="btn-album">
-            <img src={album.images[0].url} alt="Album"/>
+            <img loading="lazy" src={album.images[0].url} alt="Album"/>
 
             <div className="btn-album-info">
                 <p className="btn-album-info-title">{album.name}</p>

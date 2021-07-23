@@ -49,6 +49,13 @@ body {
         grid-gap: 20px;
     }
 
+    .grid-albums-fake-item{
+        width: 100%;
+        height: 250px;
+        border-radius: 15px;
+        background: linear-gradient(51deg, rgba(60, 60, 60, 0.25), #484848);
+    }
+
     .grid-tracks{
         display: flex;
         flex-direction: column;
@@ -126,4 +133,9 @@ body {
         margin: 0;
         font-size: 0.875rem;
     }
+}
+
+// Grid album fake
+.grid-albums-fake{
+
 }

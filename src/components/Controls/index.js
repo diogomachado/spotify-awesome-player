@@ -38,15 +38,18 @@ export default function Controls() {
 
             // Playback status updates
             player.addListener('player_state_changed', state => { 
-                console.log(state.paused);
-                setPaused(state.paused);
 
-                setProgress({
-                    position: state.position,
-                    duration: state.duration
-                });
+                if (state) {
+                    console.log(state.paused);
+                    setPaused(state.paused);
 
-                setCurrentTrack(state.track_window.current_track);
+                    setProgress({
+                        position: state.position,
+                        duration: state.duration
+                    });
+
+                    setCurrentTrack(state.track_window.current_track);
+                }
             });
 
             // Ready
