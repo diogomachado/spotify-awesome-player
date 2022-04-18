@@ -9,12 +9,16 @@ export default function Album({ album, callback }) {
 
     return (
         <button
-            data-testid={album.id}
             onClick={() => getTracksPlaylist(album.id)}
             type="button"
             className="btn-album"
         >
-            <img loading="lazy" src={album.images[0].url} alt="Album" />
+            <img
+                data-testid="cover"
+                loading="lazy"
+                src={album.images[0].url}
+                alt="Album"
+            />
 
             <div className="btn-album-info">
                 <p className="btn-album-info-title">{album.name}</p>

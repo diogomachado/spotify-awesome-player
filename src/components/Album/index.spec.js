@@ -1,10 +1,11 @@
 import Album from "./index";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 describe("Album component", () => {
     let albumMock = {};
 
-    const getTracksPlaylist = jest.fn();
+    const renderAlbum = () =>
+        render(<Album album={albumMock} callback={() => {}} />);
 
     beforeEach(() => {
         albumMock = {
@@ -58,7 +59,27 @@ describe("Album component", () => {
     });
 
     it("should render the component", () => {
-        render(<Album album={albumMock} callback={() => {}} />);
-        expect(screen.getByTestId(albumMock.id)).toBeDefined();
+        renderAlbum();
+        expect(screen.findAllByRole("button")).toBeDefined();
+    });
+
+    it("should have a image with the album cover", () => {
+        renderAlbum();
+
+        expect(screen.getByTestId("cover")).toBeDefined();
+        expect(screen.getByTestId("cover")).toHaveAttribute(
+            "src",
+            albumMock.images[0].url
+        );
+    });
+
+    it("should have a title with the album name", () => {
+        renderAlbum();
+        expect(screen.getByText(albumMock.name)).toBeDefined();
+    });
+
+    it("should have a number of tracks with the album tracks", () => {
+        renderAlbum();
+        expect(screen.getByText(albumMock.tracks.total)).toBeDefined();
     });
 });
