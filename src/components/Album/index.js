@@ -9,6 +9,7 @@ export default function Album({ album, callback }) {
 
     return (
         <button
+            data-testid="album-item"
             onClick={() => getTracksPlaylist(album.id)}
             type="button"
             className="btn-album"
